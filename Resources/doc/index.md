@@ -48,15 +48,21 @@ Additional configuration options (default values are shown here):
 ```yml
 # app/config/config.yml
 lexik_translation:
-    base_layout:     "LexikTranslationBundle::layout.html.twig" # layout used with the translation edition template
-    use_yml_tree:    false                                 # if "true" we will print a nice tree in the yml source files. It is a little slower.
-    grid_input_type: text                                  # define field type used in the grid (text|textarea)
+    base_layout:         "LexikTranslationBundle::layout.html.twig" # layout used with the translation edition template
+
+    use_yml_tree:        false  # if "true" we will print a nice tree in the yml source files. It is a little slower.
+
+    grid_input_type:     text   # define field type used in the grid (text|textarea)
+
+    grid_toggle_similar: false  # if "true", on the grid if a locale colunm is shown/hidden then similar locales columns will be shown/hidden too.
+                                # so if the col "en" is shown/hidden all "en_XX" cols will be shown/hidden too.
     storage:
-        type: orm                                          # where to store translations: "orm" or "mongodb"
-        object_manager: something                          # The name of the entity / document manager which uses different connection (see: http://symfony.com/doc/current/cookbook/doctrine/multiple_entity_managers.html)
+        type: orm                  # where to store translations: "orm" or "mongodb"
+        object_manager: something  # The name of the entity / document manager which uses different connection (see: http://symfony.com/doc/current/cookbook/doctrine/multiple_entity_managers.html)
+
     resources_registration:
-        type:                 all                                  # resources type to register: "all", "files" or "database"
-        managed_locales_only: true                                 # will only load resources for managed locales
+        type:                 all   # resources type to register: "all", "files" or "database"
+        managed_locales_only: true  # will only load resources for managed locales
 ```
 
 *Note that MongoDB 2.0.0 or later is required if you choose to use MongoDB to store translations.*
