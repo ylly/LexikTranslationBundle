@@ -73,7 +73,7 @@ abstract class File
     /**
      * @var Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToMany(targetEntity="Lexik\Bundle\TranslationBundle\Entity\Translation", mappedBy="file")
+     * @ORM\OneToMany(targetEntity="Lexik\Bundle\TranslationBundle\Entity\Translation", mappedBy="file", cascade={"persist"})
      */
     protected $translations;
 

@@ -16,6 +16,10 @@ use Doctrine\ORM\Mapping as ORM;
 abstract class TransUnit
 {
     /**
+     * <unique-constraints>
+    <unique-constraint name="key_domain_idx" columns="key_name,domain" />
+    </unique-constraints>
+
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -45,7 +49,7 @@ abstract class TransUnit
     /**
      * @var Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToMany(targetEntity="Lexik\Bundle\TranslationBundle\Entity\Translation", mappedBy="transUnit")
+     * @ORM\OneToMany(targetEntity="Lexik\Bundle\TranslationBundle\Entity\Translation", mappedBy="transUnit", cascade={"all"})
      */
     protected $translations;
 

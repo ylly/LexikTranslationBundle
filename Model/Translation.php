@@ -32,20 +32,20 @@ abstract class Translation
     /**
      * @var Lexik\Bundle\TranslationBundle\Model\File
      *
-     * @ORM\ManyToOne(targetEntity="Lexik\Bundle\TranslationBundle\Entity\File", inversedBy="translations", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Lexik\Bundle\TranslationBundle\Entity\File", inversedBy="translations")
      * @ORM\JoinColumn(fieldName="file_id", referencedColumnName="id")
      */
     protected $file;
 
     /**
      * @var \DateTime
-     * @ORM\Column(name="created_at", type="datetime")
+     * @ORM\Column(name="create_aAt", type="datetime")
      */
     protected $createdAt;
 
     /**
      * @var \DateTime
-     * @ORM\Column(name="updated_at", type="datetime")
+     * @ORM\Column(name="update_at", type="datetime")
      */
     protected $updatedAt;
 
