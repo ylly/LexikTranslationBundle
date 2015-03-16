@@ -5,7 +5,6 @@ namespace Lexik\Bundle\TranslationBundle\Model;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Symfony\Component\Validator\Constraints as Assert;
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,12 +16,19 @@ abstract class File
 {
 
     /**
+     *
      * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="domain", type="string", length=10)
      *
      * @Assert\NotBlank()
      */
@@ -31,12 +37,16 @@ abstract class File
     /**
      * @var string
      *
+     * @ORM\Column(name="locale", type="string", length=10)
+     *
      * @Assert\NotBlank()
      */
     protected $locale;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="extention", type="string", length=255)
      *
      * @Assert\NotBlank()
      */
@@ -45,6 +55,8 @@ abstract class File
     /**
      * @var string
      *
+     * @ORM\Column(name="path", type="string", length=255)
+
      * @Assert\NotBlank()
      */
     protected $path;
@@ -52,12 +64,16 @@ abstract class File
     /**
      * @var string
      *
+     * @ORM\Column(name="hash", type="string", length=255)
+     *
      * @Assert\NotBlank()
      */
     protected $hash;
 
     /**
      * @var Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="Lexik\Bundle\TranslationBundle\Entity\Translation", mappedBy="file", cascade={"persist"})
      */
     protected $translations;
 

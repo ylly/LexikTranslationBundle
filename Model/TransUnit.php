@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * This class represent a trans unit which contain translations for a given domain and key.
@@ -16,11 +17,17 @@ abstract class TransUnit
 {
     /**
      * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="key_name", type="string", length=255)
      *
      * @Assert\NotBlank()
      */
@@ -29,22 +36,30 @@ abstract class TransUnit
     /**
      * @var string
      *
+     * @ORM\Column(name="domain", type="string", length=255)
+     *
      * @Assert\NotBlank()
      */
     protected $domain;
 
     /**
      * @var Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="Lexik\Bundle\TranslationBundle\Entity\Translation", mappedBy="transUnit", cascad={"all"})
      */
     protected $translations;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
      */
     protected $createdAt;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime")
      */
     protected $updatedAt;
 

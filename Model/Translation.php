@@ -3,6 +3,7 @@
 namespace Lexik\Bundle\TranslationBundle\Model;
 
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * This class represent a translation for a given locale of a TransUnit object.
@@ -12,9 +13,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 abstract class Translation
 {
     /**
+     *
      * @var string
      *
      * @Assert\NotBlank()
+     * @ORM\Column(name="locale", type="string", length=10)
      */
     protected $locale;
 
@@ -22,21 +25,27 @@ abstract class Translation
      * @var string
      *
      * @Assert\NotBlank(groups={"contentNotBlank"})
+     * @ORM\Column(name="content", type="text")
      */
     protected $content;
 
     /**
      * @var Lexik\Bundle\TranslationBundle\Model\File
+     *
+     * @ORM\ManyToOne(targetEntity="Lexik\Bundle\TranslationBundle\Entity\File", inversedBy="translations")
+     * @ORM\JoinColumn(fieldName="file_id", referencedColumnName="id")
      */
     protected $file;
 
     /**
      * @var \DateTime
+     * @ORM\Column(name="created_at", type="datetime")
      */
     protected $createdAt;
 
     /**
      * @var \DateTime
+     * @ORM\Column(name="updated_at", type="datetime")
      */
     protected $updatedAt;
 
