@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @UniqueEntity(fields={"transUnit", "locale"})
  *
  * @ORM\Table(name="lexik_trans_unit_translations",uniqueConstraints={
- *                  @ORM\UniqueConstraint(name="trans_unit_locale_idx",columns={"trans_unit_id,locale"})
+ *                  @ORM\UniqueConstraint(name="trans_unit_locale_idx",columns={"trans_unit_id","locale"})
  *            })
  * @ORM\Entity(repositoryClass="Lexik\Bundle\TranslationBundle\Entity\TranslationRepository")
  *
@@ -31,7 +31,7 @@ class Translation extends TranslationModel
     /**
      * @var Lexik\Bundle\TranslationBundle\Entity\TransUnit
      * @ORM\ManyToOne(targetEntity="Lexik\Bundle\TranslationBundle\Entity\TransUnit", inversedBy="translations", cascade={"all"})
-     * @ORM\JoinColumn(fieldName="trans_unit_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="trans_unit_id", referencedColumnName="id")
      */
     protected $transUnit;
 

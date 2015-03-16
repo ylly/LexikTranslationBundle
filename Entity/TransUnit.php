@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @UniqueEntity(fields={"key", "domain"})
  *
  * @ORM\Table(name="lexik_trans_unit",uniqueConstraints={
- *                  @ORM\UniqueConstraint(name="key_domain_idx",columns={"key_name,domain"})
+ *                  @ORM\UniqueConstraint(name="key_domain_idx",columns={"key_name","domain"})
  *            })
  * @ORM\Entity(repositoryClass="Lexik\Bundle\TranslationBundle\Entity\TransUnitRepository")
  *
