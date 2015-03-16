@@ -32,7 +32,7 @@ abstract class Translation
     /**
      * @var Lexik\Bundle\TranslationBundle\Model\File
      *
-     * @ORM\ManyToOne(targetEntity="Lexik\Bundle\TranslationBundle\Entity\File", inversedBy="translations")
+     * @ORM\ManyToOne(targetEntity="Lexik\Bundle\TranslationBundle\Entity\File", inversedBy="translations", cascade={"persist"})
      * @ORM\JoinColumn(fieldName="file_id", referencedColumnName="id")
      */
     protected $file;

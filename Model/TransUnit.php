@@ -45,7 +45,7 @@ abstract class TransUnit
     /**
      * @var Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToMany(targetEntity="Lexik\Bundle\TranslationBundle\Entity\Translation", mappedBy="transUnit", cascad={"all"})
+     * @ORM\OneToMany(targetEntity="Lexik\Bundle\TranslationBundle\Entity\Translation", mappedBy="transUnit")
      */
     protected $translations;
 
