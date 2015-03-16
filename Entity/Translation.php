@@ -30,7 +30,7 @@ class Translation extends TranslationModel
 
     /**
      * @var Lexik\Bundle\TranslationBundle\Entity\TransUnit
-     * @ORM\ManyToOne(targetEntity="Lexik\Bundle\TranslationBundle\Entity\TransUnit", inversedBy="translations", cascad={"all"})
+     * @ORM\ManyToOne(targetEntity="Lexik\Bundle\TranslationBundle\Entity\TransUnit", inversedBy="translations", cascade={"all"})
      * @ORM\JoinColumn(fieldName="trans_unit_id", referencedColumnName="id")
      */
     protected $transUnit;
