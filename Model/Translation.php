@@ -39,13 +39,13 @@ abstract class Translation
 
     /**
      * @var \DateTime
-     * @ORM\Column(name="create_aAt", type="datetime", nullable=true)
+     * @ORM\Column(name="created_at", type="datetime", nullable=true)
      */
     protected $createdAt;
 
     /**
      * @var \DateTime
-     * @ORM\Column(name="update_at", type="datetime", nullable=true)
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
     protected $updatedAt;
 
