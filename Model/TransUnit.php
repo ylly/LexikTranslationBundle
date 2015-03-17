@@ -16,10 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
 abstract class TransUnit
 {
     /**
-     * <unique-constraints>
-    <unique-constraint name="key_domain_idx" columns="key_name,domain" />
-    </unique-constraints>
-
+     *
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -45,13 +42,6 @@ abstract class TransUnit
      * @Assert\NotBlank()
      */
     protected $domain;
-
-    /**
-     * @var Doctrine\Common\Collections\Collection
-     *
-     * @ORM\OneToMany(targetEntity="Lexik\Bundle\TranslationBundle\Entity\Translation", mappedBy="transUnit", cascade={"all"})
-     */
-    protected $translations;
 
     /**
      * @var \DateTime
@@ -113,7 +103,7 @@ abstract class TransUnit
      */
     public function setDomain($domain)
     {
-      $this->domain = $domain;
+        $this->domain = $domain;
     }
 
     /**
@@ -123,7 +113,7 @@ abstract class TransUnit
      */
     public function getDomain()
     {
-      return $this->domain;
+        return $this->domain;
     }
 
     /**

@@ -30,14 +30,6 @@ abstract class Translation
     protected $content;
 
     /**
-     * @var Lexik\Bundle\TranslationBundle\Model\File
-     *
-     * @ORM\ManyToOne(targetEntity="Lexik\Bundle\TranslationBundle\Entity\File", inversedBy="translations")
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
-     */
-    protected $file;
-
-    /**
      * @var \DateTime
      * @ORM\Column(name="created_at", type="datetime", nullable=true)
      */
@@ -88,27 +80,6 @@ abstract class Translation
     public function getContent()
     {
         return $this->content;
-    }
-
-
-    /**
-     * Set file
-     *
-     * @param \Lexik\Bundle\TranslationBundle\Model\File $file
-     */
-    public function setFile(\Lexik\Bundle\TranslationBundle\Model\File $file)
-    {
-        $this->file = $file;
-    }
-
-    /**
-     * Get file
-     *
-     * @return \Lexik\Bundle\TranslationBundle\Model\File
-     */
-    public function getFile()
-    {
-        return $this->file;
     }
 
     /**

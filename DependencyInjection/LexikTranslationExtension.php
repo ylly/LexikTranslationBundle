@@ -45,6 +45,11 @@ class LexikTranslationExtension extends Extension
 
         $this->buildTranslationStorageDefinition($container, $config['storage']['type'], isset($config['storage']['object_manager'])?$config['storage']['object_manager']:null);
 
+        $container->setParameter('lexik_translation.orm.trans_unit.class', $config['entity']['trans_unit']);
+        $container->setParameter('lexik_translation.orm.translation.class', $config['entity']['translation']);
+        $container->setParameter('lexik_translation.orm.file.class', $config['entity']['file']);
+
+        //var_dump($container->getParameter('lexik_translation.orm.file.class')); die();
         $this->registerTranslatorConfiguration($config, $container);
     }
 

@@ -92,6 +92,23 @@ class Configuration implements ConfigurationInterface
                     ->defaultValue(false)
                 ->end()
 
+                ->arrayNode('entity')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('file')
+                            ->cannotBeEmpty()
+                            ->defaultValue('Lexik\Bundle\TranslationBundle\Entity\File')
+                        ->end()
+
+                        ->scalarNode('translation')
+                            ->cannotBeEmpty()
+                            ->defaultValue('Lexik\Bundle\TranslationBundle\Entity\Translation')
+                        ->end()
+                        ->scalarNode('trans_unit')
+                            ->cannotBeEmpty()
+                            ->defaultValue('Lexik\Bundle\TranslationBundle\Entity\TransUnit')
+                        ->end()
+                ->end()
             ->end()
         ;
 

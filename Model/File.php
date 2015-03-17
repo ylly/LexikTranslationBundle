@@ -71,13 +71,6 @@ abstract class File
     protected $hash;
 
     /**
-     * @var Doctrine\Common\Collections\Collection
-     *
-     * @ORM\OneToMany(targetEntity="Lexik\Bundle\TranslationBundle\Entity\Translation", mappedBy="file", cascade={"persist"})
-     */
-    protected $translations;
-
-    /**
      * Construct.
      */
     public function __construct()
@@ -219,25 +212,4 @@ abstract class File
         return $this->hash;
     }
 
-    /**
-     * Add translation
-     *
-     * @param Lexik\Bundle\TranslationBundle\Model\Translation $translation
-     */
-    public function addTranslation(\Lexik\Bundle\TranslationBundle\Model\Translation $translation)
-    {
-        $translation->setFile($this);
-
-        $this->translations[] = $translation;
-    }
-
-    /**
-     * Get translations
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTranslations()
-    {
-        return $this->translations;
-    }
 }
