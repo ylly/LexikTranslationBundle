@@ -28,7 +28,7 @@ abstract class File
     /**
      * @var string
      *
-     * @ORM\Column(name="domain", type="string", length=10)
+     * @ORM\Column(name="domain", type="string", length=255)
      *
      * @Assert\NotBlank()
      */
@@ -46,7 +46,7 @@ abstract class File
     /**
      * @var string
      *
-     * @ORM\Column(name="extention", type="string", length=255)
+     * @ORM\Column(name="extention", type="string", length=10)
      *
      * @Assert\NotBlank()
      */
