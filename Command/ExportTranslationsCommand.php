@@ -52,7 +52,9 @@ class ExportTranslationsCommand extends ContainerAwareCommand
 
         if (count($filesToExport) > 0) {
             foreach ($filesToExport as $file) {
-                $this->exportFile($file);
+                if (!$this->cleanOldReleaseFile($file)) {
+                    $this->exportFile($file);
+                }
             }
         } else {
             $this->output->writeln('<comment>No translation\'s files in the database.</comment>');
@@ -146,5 +148,15 @@ class ExportTranslationsCommand extends ContainerAwareCommand
         } catch (\Exception $e) {
             $this->output->writeln(sprintf('<error>"%s"</error>', $e->getMessage()));
         }
+    }
+
+    protected function cleanOldReleaseFile(File $file)
+    {
+        if (!is_dir($this->getContainer()->getParameter('kernel.root_dir').'/'.$file->getPath())) {
+            $this->getContainer()->get('doctrine')->getManager()->remove($file);
+            $this->getContainer()->get('doctrine')->getManager()->flush();
+            return true;
+        }
+        return false;
     }
 }
